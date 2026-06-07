@@ -1684,9 +1684,42 @@ document.querySelectorAll('.stat-num').forEach(el => {
 
 // Sound on scroll (subtle)
 let audioUnlocked = false;
-const clickSound = new Howl({ src: ['data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJiR...'], volume: 0 });
+base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJiR...'], volume: 0 });
 
 document.addEventListener('click', () => { if (!audioUnlocked) { audioUnlocked = true; } }, { once: true });
 </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  window.openPage = function(id) {
+    const el = document.getElementById("fp-" + id);
+    if (el) el.classList.add("open");
+  };
+
+  window.closePage = function(id) {
+    const el = document.getElementById("fp-" + id);
+    if (el) el.classList.remove("open");
+  };
+
+  window.openModal = function() {
+    const m = document.getElementById("about-modal");
+    if (m) m.style.display = "flex";
+  };
+
+  window.closeModal = function() {
+    const m = document.getElementById("about-modal");
+    if (m) m.style.display = "none";
+  };
+
+  try {
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.registerPlugin(ScrollTrigger);
+    }
+  } catch(e) {}
+
+});
+</script>
+
 </body>
 </html>
